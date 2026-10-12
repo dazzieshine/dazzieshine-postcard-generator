@@ -1,0 +1,535 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #343a40;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+h2 {
+    color: #212529;
+    font-weight: 700;
+    text-align: center;
+    font-size: 2rem;
+}
+
+h3 {
+    color: #212529;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+}
+
+.workspace {
+    display: grid;
+    grid-template-columns: 520px 1fr;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.form-card,
+.preview-card {
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 6px 24px #f1f3f5;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.preview-card {
+    background: #f8f9fa;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.input-group label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #495057;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    background: #ffffff;
+    color: #212529;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #868e96;
+    box-shadow: 0 0 0 3px #dee2e6;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+#sendBtn {
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    font-size: 1rem;
+    background: #fef08a;
+    color: #212529;
+    border: 1px solid #f6e05e;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: auto;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#sendBtn:hover:not(:disabled) {
+    background: #fde047;
+    border-color: #eab308;
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px #fef08a;
+}
+
+#sendBtn:active:not(:disabled) {
+    transform: scale(0.98);
+    box-shadow: none;
+}
+
+#sendBtn:disabled {
+    background: #e9ecef;
+    color: #adb5bd;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.history-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-top: 1px solid #e9ecef;
+    padding-top: 35px;
+    overflow: visible;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+    overflow: visible;
+}
+
+.postcard {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px #cbd5e1;
+    border: 1px solid #111827;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.postcard:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 18px 38px #94a3b8;
+    z-index: 10;
+}
+
+.postcard-message {
+    font-family: 'Comic Relief', cursive, sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.25;
+    word-break: break-word;
+    white-space: pre-wrap;
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding-right: 50px;
+    scrollbar-width: none;
+}
+
+.postcard-message::-webkit-scrollbar {
+    display: none;
+}
+
+.postcard-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Comic Relief', cursive, sans-serif;
+    opacity: 0.9;
+    border-top: 1px dashed #ced4da;
+    padding-top: 10px;
+    margin-top: auto;
+    width: 100%;
+}
+
+.postcard-footer span,
+.postcard-footer div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.footer {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid #e9ecef;
+    text-align: center;
+    color: #6c757d;
+    font-size: 0.95rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.clear-btn {
+    background: #fff5f5;
+    color: #e53e3e;
+    border: 1px solid #fed7d7;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.clear-btn:hover {
+    background: #e53e3e;
+    color: #ffffff;
+    border-color: #e53e3e;
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px #fed7d7;
+}
+
+.clear-btn:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+.delete-btn,
+.edit-btn {
+    position: absolute;
+    top: 12px;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.postcard:hover .delete-btn,
+.postcard:hover .edit-btn {
+    opacity: 1;
+}
+
+.delete-btn {
+    right: 12px;
+    background: #fff5f5;
+    color: #e53e3e;
+    border: 1px solid #fed7d7;
+}
+
+.delete-btn:hover {
+    background: #e53e3e;
+    color: #ffffff;
+    border-color: #e53e3e;
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px #fed7d7;
+}
+
+.delete-btn:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+.edit-btn {
+    right: 48px;
+    background: #f8f9fa;
+    color: #495057;
+    border: 1px solid #ced4da;
+}
+
+.edit-btn:hover {
+    background: #495057;
+    color: #ffffff;
+    border-color: #495057;
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px #ced4da;
+}
+
+.edit-btn:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+/* Темыыы*/
+
+/* 1. Классическая винтажная тема */
+.postcard.theme-classic {
+    background-color: #f4eee1;
+    background-image: radial-gradient(circle, transparent 60%, #d6d3cb66);
+    color: #2b2b2b;
+    border: 12px solid transparent;
+    border-radius: 0;
+    overflow: visible;
+    border-image: repeating-linear-gradient(45deg,
+            #e53e3e,
+            #e53e3e 14px,
+            #ffffff 14px,
+            #ffffff 28px,
+            #3182ce 28px,
+            #3182ce 42px,
+            #ffffff 42px,
+            #ffffff 56px) 12;
+    box-shadow: 0 0 0 1px #111827, 0 10px 30px #cbd5e1;
+}
+
+.postcard.theme-classic:hover {
+    box-shadow: 0 0 0 1px #111827, 0 18px 38px #94a3b8;
+}
+
+.postcard.theme-classic .postcard-footer {
+    border-top-color: #d6d3cb;
+}
+
+/* 2. Зимне-новогодняя тема */
+.postcard.theme-winter {
+    background-color: #1a0b2e;
+    background-image:
+        radial-gradient(circle, #ffffff40 2px, transparent 2px),
+        radial-gradient(circle, #ffffff26 1px, transparent 1px),
+        linear-gradient(0deg, #b91c1c 0%, #4c1d95 65%, #1e1b4b 100%);
+    background-size: 30px 30px, 30px 30px, 100% 100%;
+    background-position: 0 0, 15px 15px, 0 0;
+    color: #ffffff;
+}
+
+.postcard.theme-winter::before {
+    content: "\f2dc";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    color: #ffffffbd;
+    pointer-events: none;
+}
+
+.postcard.theme-winter .postcard-footer {
+    border-top: none;
+}
+
+/* 3. Весенняя тема */
+.postcard.theme-spring {
+    background-color: #ecfdf5;
+    background-image:
+        radial-gradient(circle, #34d39966 2px, transparent 2px),
+        radial-gradient(circle, #05966940 1px, transparent 1px),
+        linear-gradient(-45deg, #f0fdf4 0%, #d1fae5 50%, #a7f3d0 100%);
+    background-size: 30px 30px, 30px 30px, 100% 100%;
+    background-position: 0 0, 15px 15px, 0 0;
+    color: #064e3b;
+}
+
+.postcard.theme-spring::before {
+    content: "\f06c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    color: #059669bf;
+    pointer-events: none;
+}
+
+.postcard.theme-spring .postcard-footer {
+    border-top: none;
+}
+
+/* 4. Летняя тема */
+.postcard.theme-summer {
+    background-color: #fef3c7;
+    background-image:
+        radial-gradient(circle at 110% -20%, #f59e0b88 0%, #fbbf2444 30%, transparent 50%),
+        radial-gradient(circle, #f59e0b33 2px, transparent 1px),
+        linear-gradient(180deg, #fef9c3 0%, #fde047 100%);
+    background-size: 100% 100%, 20px 20px, 100% 100%;
+    background-position: 0 0, 0 0, 0 0;
+    color: #78350f;
+}
+
+.postcard.theme-summer::before {
+    content: "\f185";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    color: #d97706cc;
+    pointer-events: none;
+}
+
+.postcard.theme-summer .postcard-footer {
+    border-top: none;
+}
+
+/* 5. Осенняя тема */
+.postcard.theme-autumn {
+    background-color: #4a0e0e;
+    background-image:
+        radial-gradient(circle at 110% -20%, #f59e0b66 0%, transparent 50%),
+        radial-gradient(circle, #fef08a33 2px, transparent 2px),
+        linear-gradient(135deg, #5c1313 0%, #8c1d1d 60%, #450a0a 100%);
+    background-size: 100% 100%, 24px 24px, 100% 100%;
+    background-position: 0 0, 0 0, 0 0;
+    color: #fef3c7;
+}
+
+.postcard.theme-autumn::before {
+    content: "\f52d";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    color: #fef08a;
+    pointer-events: none;
+}
+
+.postcard.theme-autumn .postcard-footer {
+    border-top: none;
+}
+
+/* 6. Майами (ГТА 6 референс, хахаха) */
+.postcard.theme-vicecity {
+    background-color: #0f051d;
+    background-image:
+        radial-gradient(circle at 90% 15%, #ec4899aa 0%, #8b5cf666 40%, transparent 70%),
+        radial-gradient(circle, #22d3ee55 1.5px, transparent 1.5px),
+        linear-gradient(135deg, #3b0764 0%, #1e1b4b 50%, #09090b 100%);
+    background-size: 100% 100%, 20px 20px, 100% 100%;
+    background-position: 0 0, 0 0, 0 0;
+    color: #e2e8f0;
+}
+
+.postcard.theme-vicecity::before {
+    content: "\f5ca";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 36px;
+    color: #f472b6;
+    text-shadow: 0 0 10px #f472b6, 0 0 20px #ec4899;
+    pointer-events: none;
+}
+
+.postcard.theme-vicecity .postcard-footer {
+    border-top: none;
+    text-shadow: 0 0 8px #22d3ee88;
+}
+
+/* 7. Декстер, мать его, Морган */
+.postcard.theme-dexter {
+    background-color: #ffffff;
+    background-image:
+        url("dexterbloodstain.png"),
+        linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+    background-position: top right, center;
+    background-size: 25% auto, cover;
+    background-repeat: no-repeat;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 10px 25px rgba(185, 28, 28, 0.12);
+}
+
+.postcard.theme-dexter:hover {
+    box-shadow: 0 18px 38px rgba(185, 28, 28, 0.22);
+}
+
+.postcard.theme-dexter .postcard-footer {
+    border-top: 2px dashed #dc262666;
+    color: #b91c1c;
+    font-weight: 500;
+}
+
+/* Всякое остальное */
+::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f3f5;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+    border: 3px solid #f1f3f5;
+    transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}

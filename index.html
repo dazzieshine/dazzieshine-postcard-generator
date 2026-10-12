@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор Открыток - Пугачев Данил</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Генератор Открыток</h2>
+
+        <!-- Идея была в том, чтобы разделить экран на две части: слева рабочая область, где пользователь может создавать открытку, 
+        а справа - предпросмотр в реальном времени. Уже под ними лежит история открыток. Вот такие пироги...-->
+        <div class="workspace">
+
+            <!-- Рабочие поля создания-->
+            <div class="form-card">
+                <h3>Создание открытки</h3>
+
+                <div class="input-group">
+                    <label for="messageInput">Текст открытки:</label>
+                    <textarea id="messageInput" placeholder="Введите текст открытки..."></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="fromInput">От кого:</label>
+                    <input type="text" id="fromInput" placeholder="Введите имя отправителя...">
+                </div>
+
+                <div class="input-group">
+                    <label for="toInput">Кому:</label>
+                    <input type="text" id="toInput" placeholder="Введите имя получателя...">
+                </div>
+
+                <div class="input-group">
+                    <label for="themeSelect">Тема открытки:</label>
+                    <select id="themeSelect">
+                        <option value="theme-classic">Классическая</option>
+                        <option value="theme-winter">Зимняя</option>
+                        <option value="theme-spring">Весенняя</option>
+                        <option value="theme-summer">Летняя</option>
+                        <option value="theme-autumn">Осенняя</option>
+                        <option value="theme-vicecity">Майами</option>
+                        <option value="theme-dexter">Меня преследует Декстер Морган</option>
+                    </select>
+                </div>
+
+                <button id="sendBtn" disabled>Отправить</button>
+            </div>
+
+            <!-- Предпросмотр -->
+            <div class="preview-card">
+                <h3>Предпросмотр</h3>
+                <div id="livePreview" class="postcard theme-classic">
+                    <div class="postcard-message" id="previewMessage">Текст открытки появится здесь...</div>
+                    <div class="postcard-footer">
+                        <span id="previewFrom">От: ...</span>
+                        <span id="previewTo">Кому: ...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- История -->
+        <div class="history-section">
+            <div class="history-header">
+                <h3>История открыток</h3>
+                <button id="clearAllBtn" class="clear-btn">Очистить всю историю</button>
+            </div>
+            <div id="historyContainer" class="history-grid"></div>
+        </div>
+
+        <footer class="footer">
+            <p> Веб-Программирование, 5 семестр</p>
+            <p> Пугачев Данил Максимович, 3-ТИД-10</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
